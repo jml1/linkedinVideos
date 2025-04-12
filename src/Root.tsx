@@ -6,7 +6,7 @@ export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Composition
-        id="MapFunction"
+        id="SuperLinkedin"
         component={MapVideo}
         durationInFrames={1800}
         fps={30}
