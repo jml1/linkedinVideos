@@ -22,7 +22,7 @@ export const MapVideo: React.FC = () => {
       }}
     >
       <TransitionSeries>
-        <TransitionSeries.Sequence durationInFrames={90}>
+        <TransitionSeries.Sequence durationInFrames={120}>
           <Title
             title="Array.prototype.map()"
             subtitle="Comment ça marche vraiment ?"
@@ -31,12 +31,12 @@ export const MapVideo: React.FC = () => {
 
         <TransitionSeries.Transition
           timing={springTiming({
-            durationInFrames: 30,
+            durationInFrames: 60,
             fps: 30,
           })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={180}>
+        <TransitionSeries.Sequence durationInFrames={600}>
           <CodeBlock
             code={`// Définition de la méthode map sur le prototype Array
 Array.prototype.map = function(callback) {
@@ -59,7 +59,7 @@ Array.prototype.map = function(callback) {
           })}
         />
 
-        <TransitionSeries.Sequence durationInFrames={180}>
+        <TransitionSeries.Sequence durationInFrames={600}>
           <CodeBlock
             code={`  // Récupération du this (le tableau source)
   const arr = this;

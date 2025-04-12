@@ -50,7 +50,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 
   // Animation de frappe du code (ralentie)
   const codeLines = code.split("\n");
-  const charsPerFrame = 0.8; // Vitesse de frappe réduite (était à 2)
+  const charsPerFrame = 0.8; // Vitesse de frappe réduite
   const totalChars = code.length;
   const typedChars = Math.min(frame * charsPerFrame, totalChars);
 
@@ -58,7 +58,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   const animatedCode = codeLines
     .map((line) => {
       if (currentChar > typedChars) return "";
-      const lineLength = line.length + 1; // +1 pour le \n
+      const lineLength = line.length + 1;
       const visibleChars = Math.max(
         0,
         Math.min(lineLength, typedChars - currentChar),
@@ -93,7 +93,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "1rem", // Réduit le padding général
+        height: "1920px", // Hauteur totale de la vidéo
+        padding: 0, // Supprime le padding pour utiliser tout l'espace
       }}
     >
       <div
@@ -102,11 +103,14 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
           transform: `scale(${containerAnimation})`,
           backgroundColor: "#2a2a2a",
           borderRadius: "15px",
-          padding: "1.5rem", // Réduit le padding du container
-          width: "90%", // Augmente la largeur
-          maxWidth: "1200px", // Augmente la largeur maximale
+          padding: "1.5rem",
+          width: "95%", // Augmente encore la largeur
+          height: "90%", // Utilise 90% de la hauteur
+          maxWidth: "1500px",
           boxShadow: "0 4px 20px rgba(0, 0, 0, 0.5)",
           border: "1px solid rgba(255, 255, 255, 0.1)",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
         <div
@@ -121,9 +125,9 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         >
           <h3
             style={{
-              fontSize: "2.2em",
+              fontSize: "2.5em",
               color: "#61dafb",
-              margin: "0 0 1rem 0",
+              margin: "0 0 1.5rem 0",
               fontFamily: "SF Pro Display, system-ui, sans-serif",
               textShadow: "0 0 10px rgba(97, 218, 251, 0.3)",
             }}
@@ -136,16 +140,23 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             position: "relative",
             backgroundColor: "#1a1a1a",
             borderRadius: "10px",
-            padding: "2rem",
+            padding: "2.5rem",
             overflow: "hidden",
+            flex: 1, // Prend tout l'espace restant
+            display: "flex",
+            flexDirection: "column",
           }}
         >
           <pre
             style={{
               margin: 0,
               fontFamily,
-              fontSize: "1.8em", // Augmente la taille de la police
-              lineHeight: "1.6",
+              fontSize: "2.2em", // Augmente encore la taille de la police
+              lineHeight: "1.7",
+              flex: 1, // Prend tout l'espace disponible
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center", // Centre verticalement le code
             }}
           >
             <code

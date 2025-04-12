@@ -8,7 +8,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="MapFunction"
         component={MapVideo}
-        durationInFrames={360}
+        durationInFrames={1800}
         fps={30}
         width={1080}
         height={1920}
