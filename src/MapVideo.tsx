@@ -1,9 +1,8 @@
 import React from "react";
-import { AbsoluteFill, interpolate, spring, useCurrentFrame } from "remotion";
+import { AbsoluteFill, spring, useCurrentFrame } from "remotion";
 import { CodeEditor } from "./components/CodeEditor";
 import { Title } from "./components/Title";
 import { TransitionSeries, springTiming } from "@remotion/transitions";
-import { CosmosBackground } from "./components/CosmosBackground";
 
 // ES6 Map Implementation
 const mapImplementationCode = `// The real Array.prototype.map() implementation
@@ -97,8 +96,11 @@ export const MapVideo: React.FC = () => {
   });
 
   return (
-    <AbsoluteFill>
-      <CosmosBackground />
+    <AbsoluteFill
+      style={{
+        position: "relative",
+      }}
+    >
       <TransitionSeries>
         {/* Title Sequence - 150 frames */}
         <TransitionSeries.Sequence durationInFrames={150}>
@@ -109,11 +111,11 @@ export const MapVideo: React.FC = () => {
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
-          timing={springTiming({ durationInFrames: 30 })}
+          timing={springTiming({ durationInFrames: 60 })}
         />
 
         {/* Implementation - 600 frames */}
-        <TransitionSeries.Sequence durationInFrames={600}>
+        <TransitionSeries.Sequence durationInFrames={800}>
           <AbsoluteFill
             style={{
               transform: `scale(${zoomScale})`,
@@ -130,7 +132,7 @@ export const MapVideo: React.FC = () => {
 
         <TransitionSeries.Transition
           timing={springTiming({
-            durationInFrames: 45,
+            durationInFrames: 60,
             config: {
               damping: 15,
               stiffness: 130,
@@ -140,7 +142,7 @@ export const MapVideo: React.FC = () => {
         />
 
         {/* Examples - 975 frames */}
-        <TransitionSeries.Sequence durationInFrames={975}>
+        <TransitionSeries.Sequence durationInFrames={750}>
           <CodeEditor
             initialCode={examplesCode}
             typingSpeed={1}
