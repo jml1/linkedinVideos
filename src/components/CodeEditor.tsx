@@ -8,6 +8,7 @@ import {
 } from "remotion";
 import { loadFont } from "@remotion/google-fonts/JetBrainsMono";
 import Prism from "prismjs";
+import { type ThemeName, themes } from "../themes/editorThemes";
 import "prismjs/themes/prism-tomorrow.css";
 import "prismjs/components/prism-javascript";
 
@@ -18,6 +19,7 @@ interface CodeEditorProps {
   typingSpeed?: number;
   showLineNumbers?: boolean;
   highlightOutput?: boolean;
+  theme?: ThemeName;
 }
 
 export const CodeEditor: React.FC<CodeEditorProps> = ({
@@ -25,10 +27,12 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
   typingSpeed = 1,
   showLineNumbers = false,
   highlightOutput = false,
+  theme = "dark",
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const codeRef = useRef<HTMLElement>(null);
+  const currentTheme = themes[theme];
 
   // Animation d'écriture
   const typedChars = Math.min(frame * typingSpeed, initialCode.length);
@@ -63,19 +67,20 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
   return (
     <AbsoluteFill
       style={{
-        backgroundColor: "#1a1a1a",
+        backgroundColor: currentTheme.background,
         padding: "2rem",
       }}
     >
       <div
         style={{
-          backgroundColor: "#2d2d2d",
+          backgroundColor: currentTheme.containerBackground,
           borderRadius: "8px",
           padding: "2rem",
           height: "100%",
           overflow: "auto",
           overflowX: "hidden",
           position: "relative",
+          color: currentTheme.textColor,
         }}
       >
         {showLineNumbers && (
@@ -85,8 +90,8 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
               left: "1rem",
               top: "2rem",
               bottom: "2rem",
-              color: "#666",
-              borderRight: "1px solid #444",
+              color: currentTheme.lineNumbersColor,
+              borderRight: `1px solid ${currentTheme.lineNumbersBorder}`,
               paddingRight: "1rem",
               fontFamily,
               fontSize: "1.6em",

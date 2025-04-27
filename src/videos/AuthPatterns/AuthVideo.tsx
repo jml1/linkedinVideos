@@ -1,12 +1,14 @@
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { CodeEditor } from "../../components/CodeEditor";
 import { Title } from "../../components/Title";
 import { TransitionSeries, springTiming } from "@remotion/transitions";
 import { TerminalBackground } from "../../components/TerminalBackground";
+import { ColorExplosion } from "../../components/ColorExplosion";
 
 // Basic Authentication
-const basicAuthCode = `// Basic Authentication Implementation
+const basicAuthCode = `// Node.js & Express Authentication Patterns
+// Basic Authentication Implementation with Express Middleware
 const basicAuth = async (req, res, next) => {
   // Get Authorization header
   const authHeader = req.headers.authorization;
@@ -50,7 +52,8 @@ app.get('/api/protected',
 );`;
 
 // JWT Authentication
-const jwtAuthCode = `// JWT Authentication Implementation
+const jwtAuthCode = `// Node.js & Express Authentication Patterns
+// JWT (JSON Web Token) Implementation with Express
 const jwt = require('jsonwebtoken');
 
 const JWT_SECRET = process.env.JWT_SECRET;
@@ -99,7 +102,8 @@ const verifyToken = (req, res, next) => {
 };`;
 
 // OAuth2 Authentication
-const oauth2Code = `// OAuth2 Implementation with Google
+const oauth2Code = `// Node.js & Express Authentication Patterns
+// OAuth2 Implementation with Passport.js and Google Strategy
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
@@ -145,7 +149,8 @@ app.get('/auth/google/callback',
 );`;
 
 // Session-based Authentication
-const sessionAuthCode = `// Session-based Authentication
+const sessionAuthCode = `// Node.js & Express Authentication Patterns
+// Session-based Authentication with Express-session
 const session = require('express-session');
 
 app.use(session({
@@ -190,68 +195,133 @@ const checkSession = (req, res, next) => {
 };`;
 
 export const AuthVideo: React.FC = () => {
+  const frame = useCurrentFrame();
   return (
     <AbsoluteFill style={{ position: "relative" }}>
       <TerminalBackground />
       <TransitionSeries>
-        {/* Title */}
+        {/* Main Title with color explosion */}
+        <TransitionSeries.Sequence durationInFrames={160}>
+          <AbsoluteFill>
+            {frame < 140 && <ColorExplosion />}
+            <Title
+              title="Authentication Patterns"
+              subtitle="Node.js & Express Implementation Guide"
+            />
+          </AbsoluteFill>
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          timing={springTiming({ durationInFrames: 30 })}
+        />
+
+        {/* Basic Auth Title */}
         <TransitionSeries.Sequence durationInFrames={120}>
-          <Title
-            title="Authentication Patterns"
-            subtitle="Secure your applications the right way"
-          />
+          <AbsoluteFill>
+            <Title
+              title="Basic Authentication"
+              subtitle="HTTP Header-based Authentication"
+            />
+          </AbsoluteFill>
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
           timing={springTiming({ durationInFrames: 30 })}
         />
 
-        {/* Basic Auth */}
-        <TransitionSeries.Sequence durationInFrames={660}>
-          <CodeEditor
-            initialCode={basicAuthCode}
-            typingSpeed={1.2}
-            showLineNumbers={true}
-          />
+        {/* Basic Auth Code */}
+        <TransitionSeries.Sequence durationInFrames={1000}>
+          <AbsoluteFill>
+            <CodeEditor
+              initialCode={basicAuthCode}
+              typingSpeed={1.2}
+              showLineNumbers={true}
+            />
+          </AbsoluteFill>
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
           timing={springTiming({ durationInFrames: 30 })}
         />
 
-        {/* JWT Auth */}
-        <TransitionSeries.Sequence durationInFrames={660}>
-          <CodeEditor
-            initialCode={jwtAuthCode}
-            typingSpeed={1.2}
-            showLineNumbers={true}
-          />
+        {/* JWT Auth Title */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <AbsoluteFill>
+            <Title
+              title="JWT Authentication"
+              subtitle="Token-based Authentication"
+            />
+          </AbsoluteFill>
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
           timing={springTiming({ durationInFrames: 30 })}
         />
 
-        {/* OAuth2 */}
-        <TransitionSeries.Sequence durationInFrames={360}>
-          <CodeEditor
-            initialCode={oauth2Code}
-            typingSpeed={1.2}
-            showLineNumbers={true}
-          />
+        {/* JWT Auth Code */}
+        <TransitionSeries.Sequence durationInFrames={1100}>
+          <AbsoluteFill>
+            <CodeEditor
+              initialCode={jwtAuthCode}
+              typingSpeed={1.2}
+              showLineNumbers={true}
+            />
+          </AbsoluteFill>
         </TransitionSeries.Sequence>
 
         <TransitionSeries.Transition
           timing={springTiming({ durationInFrames: 30 })}
         />
 
-        {/* Session Auth */}
-        <TransitionSeries.Sequence durationInFrames={360}>
-          <CodeEditor
-            initialCode={sessionAuthCode}
-            typingSpeed={1.2}
-            showLineNumbers={true}
-          />
+        {/* OAuth2 Title */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <AbsoluteFill>
+            <Title title="OAuth 2.0" subtitle="Third-party Authentication" />
+          </AbsoluteFill>
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          timing={springTiming({ durationInFrames: 30 })}
+        />
+
+        {/* OAuth2 Code */}
+        <TransitionSeries.Sequence durationInFrames={1000}>
+          <AbsoluteFill>
+            <CodeEditor
+              initialCode={oauth2Code}
+              typingSpeed={1.2}
+              showLineNumbers={true}
+            />
+          </AbsoluteFill>
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          timing={springTiming({ durationInFrames: 30 })}
+        />
+
+        {/* Session Auth Title */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <AbsoluteFill>
+            <Title
+              title="Session Authentication"
+              subtitle="Cookie-based Authentication"
+            />
+          </AbsoluteFill>
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition
+          timing={springTiming({ durationInFrames: 30 })}
+        />
+
+        {/* Session Auth Code */}
+        <TransitionSeries.Sequence durationInFrames={1000}>
+          <AbsoluteFill>
+            <CodeEditor
+              initialCode={sessionAuthCode}
+              typingSpeed={1.2}
+              showLineNumbers={true}
+            />
+          </AbsoluteFill>
         </TransitionSeries.Sequence>
       </TransitionSeries>
     </AbsoluteFill>
