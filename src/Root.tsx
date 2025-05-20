@@ -9,6 +9,17 @@ import { CSRFVideo } from "./videos/SecurityCSRF/CSRFVideo";
 import { SQLInjectionVideo } from "./videos/SecuritySQLI/SQLInjectionVideo";
 import { TailwindTipsVideo } from "./videos/Shorts/TailwindTipsVideo";
 import { TailwindBasicsVideo } from "./videos/Shorts/TailwindBasicsVideo";
+import { TestingDebateVideo } from "./videos/Shorts/TestingDebateVideo";
+import { TypeScriptDebateVideo } from "./videos/Shorts/TypeScriptDebateVideo";
+import { AICodingDebateVideo } from "./videos/Shorts/AICodingDebateVideo";
+import { ClosuresExplainedVideo } from "./videos/Shorts/ClosuresExplainedVideo";
+import { FrameworkStatsVideo } from "./videos/Shorts/FrameworkStatsVideo";
+import { PythagoreanVideo } from "./videos/Math/PythagoreanVideo";
+import { ReactOptimizationVideo } from "./videos/Shorts/ReactOptimizationVideo";
+import { GreenCodeVideo } from "./videos/Shorts/GreenCodeVideo";
+import { AIStatsVideo } from "./videos/Shorts/AIStatsVideo";
+import { LinkedInGrowthVideo } from "./videos/LinkedInGrowthVideo";
+import { TechPuzzleVideo } from "./videos/TechPuzzleVideo";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -61,13 +72,15 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       /> */}
+
       <Composition
-        id="TailwindBasics"
-        component={TailwindBasicsVideo}
-        durationInFrames={670}
+        id="TechPuzzle"
+        component={TechPuzzleVideo}
+        durationInFrames={780}
         fps={30}
         width={1080}
-        height={1920}
+        height={1080}
+        defaultProps={{}}
       />
     </>
   );
