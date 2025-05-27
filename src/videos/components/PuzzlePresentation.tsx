@@ -38,7 +38,7 @@ export const PuzzlePresentation: React.FC<PuzzlePresentationProps> = ({
 
   // Animation de surbrillance pour le code
   const lineCount = codeExample.split("\n").length;
-  const highlightLine = Math.floor((frame % (lineCount * 30)) / 30);
+  const highlightLine = Math.floor((frame / 30) % lineCount);
 
   return (
     <AbsoluteFill
@@ -81,7 +81,7 @@ export const PuzzlePresentation: React.FC<PuzzlePresentationProps> = ({
       >
         <pre
           style={{
-            fontSize: "2rem",
+            fontSize: "1.1rem",
             fontFamily: "Consolas, monospace",
             margin: 0,
             color: "#A9B7C6",

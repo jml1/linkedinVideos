@@ -20,6 +20,12 @@ import { GreenCodeVideo } from "./videos/Shorts/GreenCodeVideo";
 import { AIStatsVideo } from "./videos/Shorts/AIStatsVideo";
 import { LinkedInGrowthVideo } from "./videos/LinkedInGrowthVideo";
 import { TechPuzzleVideo } from "./videos/TechPuzzleVideo";
+import { BirthdayPuzzleVideo } from "./videos/BirthdayPuzzleVideo";
+import { MontyHallPuzzleVideo } from "./videos/MontyHallPuzzleVideo";
+import { PrisonersPuzzleVideo } from "./videos/PrisonersPuzzleVideo";
+import { MemoryLeakPuzzleVideo } from "./videos/MemoryLeakPuzzleVideo";
+import { NaNPuzzleVideo } from "./videos/NaNPuzzleVideo";
+import { ThisBindingPuzzleVideo } from "./videos/ThisBindingPuzzleVideo";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -72,11 +78,10 @@ export const RemotionRoot: React.FC = () => {
         width={1080}
         height={1920}
       /> */}
-
       <Composition
-        id="TechPuzzle"
-        component={TechPuzzleVideo}
-        durationInFrames={780}
+        id="ThisBindingPuzzle"
+        component={ThisBindingPuzzleVideo}
+        durationInFrames={840}
         fps={30}
         width={1080}
         height={1080}

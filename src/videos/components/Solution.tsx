@@ -46,7 +46,7 @@ export const Solution: React.FC<SolutionProps> = ({
 
   // Animation de surbrillance pour le code amélioré
   const lineCount = improvedCode.split("\n").length;
-  const highlightLine = Math.floor((frame % (lineCount * 30)) / 30);
+  const highlightLine = Math.floor((frame / 30) % lineCount);
 
   return (
     <AbsoluteFill
@@ -104,7 +104,7 @@ export const Solution: React.FC<SolutionProps> = ({
       >
         <pre
           style={{
-            fontSize: "1.8rem",
+            fontSize: "1.1rem",
             fontFamily: "Consolas, monospace",
             margin: 0,
             color: "#A9B7C6",
